@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --line-border-empty: rgb(177, 208, 177);
+  --line-border-fill: #ae4ec6;
+  --circle-background-color: antiquewhite;
+  --btn-color: #ae4ec6;
+}
+body {
+  /* background-color: #000; */
+  background: linear-gradient(to bottom, #ffffff, #000000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+/* the entire container, w the numbers and buttons */
+.container {
+  text-align: center;
+}
+
+/* the entire container, w the numbers and buttons */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 2rem;
+  max-width: 100%;
+  width: 20rem;
+}
+/* the empty progress bar, before steps are completed and the color fills on the progress bar */
+.progress-container::before {
+  content: '';
+  background-color: var(--line-border-empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+  transition: 0.4 ease;
+  opacity: .2;
+ 
+}
+
+/* the progress bar that transitions the line  */
+.progress {
+  background-color: var(--line-border-fill);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 0%;
+  z-index: -1;
+  transition: 0.4 ease;
+  opacity: .9;
+}
+
+.circle {
+  background-color: var(--circle-background-color);
+  color: #999;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #808080;
+  transition: .4s ease;
+
+}
+
+.circle.active {
+  border-color: #ae4ec6;
+  
+}
+
+/* next and prev buttons */
+.btn {
+  background-color: var(--btn-color);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: .5rem 2rem;
+  margin: 5px;
+  font-size: 1rem;
+}
+
+/* makes button act as a button gives effect when clicking */
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
